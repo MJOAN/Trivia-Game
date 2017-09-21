@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    background-image: url("../images/ieee-banner.jpg");
+    background-repeat: no-repeat;
+    margin: 25px;
+}
+
+/* learning never exhausts the mind, Da Vinci */
+
+div:#aftergame-stats {
+	display: hidden
+}
+
