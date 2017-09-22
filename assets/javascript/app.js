@@ -10,7 +10,7 @@ var questionObject = {
     },
     {
         question: "In which year did the first smartphone debut?",
-        choices: {"2001", "1998", "1993"},
+        choices: ["2001", "1998", "1993"],
         answer: 2,
     },
     {
