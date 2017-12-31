@@ -4,44 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>IEEE Trivia Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Added link to the jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Arimo:700|Merriweather|Montserrat|Mukta+Malar|Open+Sans|PT+Sans|Roboto" rel="stylesheet">
     <link type="stylesheet" src="./assets/css/style.css"></link>
 </head>
 
 <body>
     <div class="jumbotron">
-        <h1 class="text-center">IEEE Trivia!</h1>
-        <div class="text-center">
-            <!-- countdown timer which shows on every page throughout game-->
-            <h3 class="text-center" id="timer">Time Remaining: </h3>
-
+        <div class="container">
             <div class="row">
-            <div class="col-lg-12">
-            <!-- First Panel: Holds the trivia questions and final game stats-->
-            <div class="panel panel-default gamestats">
-            <div class="panel-heading">
-                <h3 class="panel-title" id="question"><strong></strong></h3>
+                <h1 class="text-center">IEEE Trivia!</h1>
+                <div class="mainarea col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <h3 class="text-center" id="timer"></h3>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="question"><h3><strong></strong></h3></div>
+                        <div class="panel-body" id="choices"><h3><strong></strong></h3></div>
+                    </div>
+                     <div class="panel panel-body gamestats"></div>
+                </div>
             </div>
-            <div class="panel-body">
-              <h4 id="answer-choices">
-                <p id="answers" onclick=""></p>
-              </h4>
-            </div>
+        </div>
 
-          
-           
-      
-                    </div> <!-- closes first panel -->
-                </div> <!-- closes row -->
-            </div>  <!-- closes row -->
-        </div>  <!-- closes text-center -->    
-    </div>  <!-- closes jumbotron -->
+    </div>
 
-    <!-- Added link to the jQuery library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <footer class="page-footer blue center-on-small-only">
+        <a href="https://github.com/MJOAN/Trivia-Game"><h6>&#169; Coding Boot Camp Copyright 2018, Student: Mariam Joan</h6></a>
+    </footer>
+
+
     <script src="./assets/javascript/app.js"></script>
-
-</body>
-
+    </body>
 </html>
