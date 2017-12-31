@@ -2,16 +2,48 @@
     box-sizing: border-box;
 }
 
+
 body {
-    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-image: url("../images/ieee-banner.jpg");
     background-repeat: no-repeat;
     margin: 25px;
 }
 
-/* learning never exhausts the mind, Da Vinci */
 
-div:#aftergame-stats {
-	display: hidden
+.jumbotron {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
+
+h2 {
+  padding: 5%;
+  color: white;
+  text-align: center;
+  background-color: navy;
+}
+
+
+ 
+footer {
+    position: fixed;
+    bottom: 50px;
+    margin-right: -25px;
+    width: 100%;
+    background-color: #666666;
+    color: white;
+    text-align: center;
+}
+
+/* 
+font-family: 'Montserrat', sans-serif;
+font-family: 'Arimo', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Merriweather', serif;
+font-family: 'Mukta Malar', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+learning never exhausts the mind, Da Vinci */
 
