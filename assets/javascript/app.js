@@ -45,16 +45,16 @@ var questions = [{
 var questionMain = questions[Math.floor(Math.random() * questions.length)];  // with questionIndex === undefined  && question.length === [Object object]
 console.log("questionMain: ", questionMain)
 
-var questionIndex = questions.length; 
+var questionIndex = questionMain.length; 
 
 var panelQuestion = $("#question");
 var panelAnswer = $("#choices");
-
-var userguess = "";
+var panelMessages = $(".messages");
+var panelStats =  $(".gamestats");
+var userGuess = "";
 
 console.log("QA: ", panelQuestion, panelAnswer)
 console.log("# of Questions", questionIndex)
-
 
 var counter = 30;
 var correctCounter = 0;
@@ -64,13 +64,11 @@ var unansweredCounter = 0;
 var oot_message = "You are out of time!";
 var corr_message = "The correct answer was: ";
 
-
 // MAIN PROCESS
 // ==============================================================================
     $(document).ready(function() { 
         countDown();
         questionGenerator();
-
     });
 
 // FUNCTIONS
@@ -89,73 +87,67 @@ var corr_message = "The correct answer was: ";
             }
             $("#timer").html("<h2>" + counter + " seconds</h2>");
         }
-    };
+    }
 
     function questionGenerator() {  
 
         panelQuestion.html("<h2>" + questionMain.question + "</h2>"); 
-
         var input = '';
-
+    
             for (var i = 0; i < questionMain.choices.length; i++) {
-              options = '<input type="radio" name="options" value=' + i + '/>';
+              var options = '<input type="radio" name="options" value=' + i + '/>';
               options += questionMain.choices[i];
+              questionIndex--;
               
               console.log("Answer Options: ", options)
+              console.log("# of Questions: ", questionIndex)
+
               panelAnswer.append("<h3> " + options + "  <h3>");
+              updateScore();
             }
     }
 
-    function choose() {
-        selections[questionCounter] = +$('input[name="answer"]:checked').val();
-  }
+
+    function updateScore() {  
+        var userClick = $("h3 options").val();
+        var userGuess = $("input[name='options']:checked").val();
+        
+        console.log("User Guess: ", userGuess)
+        console.log("User Clicked: ", userClick)
+
+        if ($("input:radio[name='options']").change(function(event) {
+
+            if (userGuess === questionMain.answer) {
+                correctCounter++;
+                panelMessages.html("<p>" + "Correct!" + "<p>" + "Next question!" +  "<p>");
+                setTimeout(function(){ location.reload(); }, 5000);
+
+                console.log("Correct Counter Score: ", correctCounter)
+                console.log("Question Answer: ", questionMain.answer)
 
 
+            } else if (userGuess !== questionMain.answer) {
 
+                incorrectCounter++;
+                panelMessages.html("<p>" + "Incorrect!" + "<p>" + corr_message + questionMain.answer + "<p>" + "Let's move onto the next question!" +  "<p>")
+                setTimeout(function(){ location.reload(); }, 5000);
 
-/*
-    function answerChoices() {
+                console.log("Incorrect Counter Score: ", incorrectCounter)
+                console.log("Question Answer: ", questionMain.answer)
+            
+            } else {
+                unansweredCounter++;
+                panelMessages.html("<p>" + oot_message + "<p>" + "Please try again!");
+                setTimeout(function(){ location.reload(); }, 5000);
 
-        // var to hold our choices array 
-        var choices = [];
-
-        for (var i = 0; i < questions.question.choices[i]; i++) {
-            choices++;
-            console.log(choices);
-        }
-        // choices += "<p onclick="
-        // display choices of questions array 
-        $("#answer-choices").html("<p>" + choices[i] + "</p>");
-        $("#answer-choices").on("click", answerChoices()).html(choices);
-    }  // end questionAnswerGenerator 
-
-    // Function that updates the score...
-    function updateScore() {
-
-        // If guess the correct answer, increase and update score, go to next quesiton
-        if (userguess === answer) {
-            panel.html("<p>" + "Correct!" + "<p>");
-            // code to move to next question
-            correctCounter++;
-            updateScore();
-            countDown();
-
-        } else if (userguess === !answer) {
-            panel.html("<p>" + oot_message + "<p>");
-            $("#answer-choices").html("<p>" + corr_message + answer + "<p>")
-            incorrectCounter++
-            countDown();
-
-        } else {
-            panel.html(oot_message);
-            unansweredCounter++;
-            countDown();
-        }
-    }*/
-
+                console.log("Unanswered Counter Score: ", unansweredCounter)            
+            }
+        }));
+    };
+    
     function winLoss() {
             // if all questions have been generated then output HTML final stats  
-            if (questionIndex === 0 || counter === 0) {
+            if (questionIndex === 0) {
 
                 // var html to store incorrect, correct and unanswered.
                 var stats =
@@ -163,10 +155,10 @@ var corr_message = "The correct answer was: ";
                     "<p>Correct Answers: " + correctCounter + "</p>" +
                     "<p>Incorrect Answers:" + incorrectCounter + "</p>" +
                     "<p>Unanswered: " + unansweredCounter + "</p>"
-                    //"<p onclick="">Start Over?</p>";
+                    //"<p onclick="">Would you like to play again?</p>";
             }
             // Set the inner HTML contents of div to our html string
-            $(".gamestats").html(stats);
+            panelStats.html(stats);
         
         }
 
