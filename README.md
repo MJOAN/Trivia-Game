@@ -2,7 +2,7 @@
 
 ## Overview
 
-Here I created a Trivia game using JavaScript for the logic and jQuery to manipulate HTML. Be sure to layout this app with valid HTML and stylish CSS.
+Here I created a Trivia game using JavaScript for the logic and jQuery to manipulate HTML, based on Coding Boot Camp (C) 2016 template code. 
 
 ![Basic](screenshot1.png)
 ![Basic](screenshot2.png)
